@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Greens — Concept Brief</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:         #030712;
+      --ink-deep:    #0A0E1A;
+      --ink-dark:    #111827;
+      --ink-mid:     #1E2330;
+      --ink-lift:    #252D3D;
+      --g700:        #374151;
+      --g600:        #4B5563;
+      --g500:        #6B7280;
+      --g400:        #9CA3AF;
+      --g300:        #D1D5DB;
+      --g200:        #E5E7EB;
+      --blue-core:   #0A7AFF;
+      --blue-vivid:  #2EA2FF;
+      --blue-bright: #55BFFF;
+      --emerald:     #00E89B;
+      --emerald-dim: rgba(0,232,155,0.12);
+      --amber:       #FFB400;
+      --white:       #FFFFFF;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--ink);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 72px 48px 100px;
+    }
+
+    /* ── Utilities ── */
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--g500);
+    }
+
+    .label.green  { color: var(--emerald); }
+    .label.blue   { color: var(--blue-vivid); }
+    .label.amber  { color: var(--amber); }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--g600);
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--g700);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--g700);
+      margin: 52px 0;
+    }
+
+    /* ── Type ── */
+    .hero-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(4rem, 9vw, 6.5rem);
+      font-weight: 400;
+      line-height: 0.93;
+      letter-spacing: -0.025em;
+      color: var(--white);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--emerald);
+    }
+
+    h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 0.92rem;
+      color: var(--g300);
+      line-height: 1.78;
+      margin-bottom: 14px;
+      max-width: 700px;
+    }
+
+    p strong { color: var(--white); font-weight: 600; }
+
+    p.wide { max-width: none; }
+
+    /* ── Header ── */
+    .header {
+      border-bottom: 1px solid var(--g700);
+      padding-bottom: 48px;
+      margin-bottom: 60px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 44px;
+    }
+
+    .ecrof-mark {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--blue-core);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-sub {
+      margin-top: 24px;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--g400);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── Callout ── */
+    .callout {
+      background: var(--ink-mid);
+      border-left: 3px solid var(--emerald);
+      padding: 22px 28px;
+      margin: 28px 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .callout p { margin: 0; font-size: 1rem; color: var(--g200); line-height: 1.7; }
+    .callout p em { font-style: italic; color: var(--emerald); }
+    .callout.blue { border-left-color: var(--blue-core); }
+    .callout.blue p { color: var(--g200); }
+
+    /* ── Grid pillars ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--g700);
+      border: 1px solid var(--g700);
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--g700);
+      border: 1px solid var(--g700);
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--g700);
+      border: 1px solid var(--g700);
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+
+    .cell {
+      background: var(--ink-dark);
+      padding: 26px 22px;
+    }
+
+    .cell-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      color: var(--emerald);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .cell-num.blue { color: var(--blue-bright); }
+    .cell-num.amber { color: var(--amber); }
+
+    .cell h4 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .cell p {
+      font-size: 0.8rem;
+      color: var(--g500);
+      line-height: 1.65;
+      margin: 0;
+      max-width: none;
+    }
+
+    /* ── Revenue table ── */
+    .rev-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 28px 0;
+      font-size: 0.83rem;
+    }
+
+    .rev-table th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--g600);
+      padding: 10px 16px;
+      text-align: right;
+      border-bottom: 1px solid var(--g700);
+    }
+
+    .rev-table th:first-child { text-align: left; }
+
+    .rev-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--ink-mid);
+      color: var(--g400);
+      text-align: right;
+    }
+
+    .rev-table td:first-child {
+      text-align: left;
+      color: var(--g300);
+      font-weight: 500;
+    }
+
+    .rev-table tr.total td {
+      color: var(--white);
+      font-weight: 700;
+      border-top: 1px solid var(--g600);
+      border-bottom: none;
+      padding-top: 16px;
+    }
+
+    .rev-table tr.total td:first-child { color: var(--emerald); }
+
+    .rev-table td.pos { color: var(--emerald); }
+    .rev-table td.neg { color: var(--g600); }
+
+    /* ── Big stat ── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--g700);
+      border: 1px solid var(--g700);
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 28px 0;
+    }
+
+    .stat {
+      background: var(--ink-dark);
+      padding: 28px 20px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.2rem;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-value em { color: var(--emerald); font-style: normal; font-size: 1.4rem; }
+
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--g600);
+    }
+
+    /* ── Revenue row list ── */
+    .rev-row {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--ink-mid);
+    }
+
+    .rev-row:last-child { border-bottom: none; }
+
+    .rev-idx {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--g600);
+      padding-top: 3px;
+      min-width: 32px;
+    }
+
+    .rev-body h4 {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .rev-body p {
+      font-size: 0.8rem;
+      color: var(--g500);
+      margin: 0;
+      max-width: none;
+    }
+
+    /* ── Role block ── */
+    .role-block {
+      background: linear-gradient(135deg, var(--ink-dark) 0%, #0d1829 100%);
+      border: 1px solid var(--blue-core);
+      border-radius: 6px;
+      padding: 36px 32px;
+      margin: 24px 0;
+    }
+
+    .role-block h2 { color: var(--blue-bright); font-size: 1.5rem; }
+
+    .steps { margin-top: 24px; display: flex; flex-direction: column; gap: 14px; }
+
+    .step {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .step-n {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--blue-core);
+      background: rgba(10, 122, 255, 0.1);
+      border: 1px solid rgba(10, 122, 255, 0.2);
+      border-radius: 3px;
+      padding: 4px 8px;
+      min-width: 40px;
+      text-align: center;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .step-t {
+      font-size: 0.86rem;
+      color: var(--g300);
+      line-height: 1.65;
+    }
+
+    .step-t strong { color: var(--white); }
+
+    /* ── Tags ── */
+    .tags { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      padding: 5px 10px;
+    }
+
+    .tag.green {
+      color: var(--emerald);
+      background: rgba(0,232,155,0.07);
+      border: 1px solid rgba(0,232,155,0.2);
+    }
+
+    .tag.blue {
+      color: var(--blue-bright);
+      background: rgba(10,122,255,0.07);
+      border: 1px solid rgba(10,122,255,0.2);
+    }
+
+    .tag.amber {
+      color: var(--amber);
+      background: rgba(255,180,0,0.07);
+      border: 1px solid rgba(255,180,0,0.2);
+    }
+
+    /* ── GreenBook quote ── */
+    .anchor-quote {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: var(--g300);
+      line-height: 1.55;
+      max-width: 640px;
+      padding: 32px 0;
+    }
+
+    .anchor-quote strong { color: var(--emerald); font-style: normal; }
+
+    .anchor-attr {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      color: var(--g600);
+      margin-top: 12px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid var(--g700);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .footer p { font-size: 0.75rem; color: var(--g600); margin: 0; max-width: none; }
+    .footer .ecrof-mark { font-size: 0.88rem; display: block; margin-bottom: 4px; }
+
+    /* ── Highlight bar ── */
+    .highlight-bar {
+      background: var(--emerald-dim);
+      border: 1px solid rgba(0,232,155,0.2);
+      border-radius: 4px;
+      padding: 18px 24px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .highlight-bar .val {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2rem;
+      color: var(--emerald);
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .highlight-bar .desc {
+      font-size: 0.85rem;
+      color: var(--g300);
+      line-height: 1.6;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .page { padding: 40px 20px 64px; }
+      .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .stat-row { grid-template-columns: repeat(2, 1fr); }
+      .header-top { flex-direction: column; gap: 12px; }
+      .rev-table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="header">
+    <div class="header-top">
+      <div class="label green">Concept Exploration Brief &mdash; Confidential</div>
+      <div class="ecrof-mark">Ecrof Media Co.</div>
+    </div>
+
+    <div class="hero-title">The <em>Greens</em></div>
+
+    <p class="hero-sub">
+      Platform infrastructure for East Side Golf. A community network, course directory, membership program, and revenue architecture that turns the brand into the operating layer for Black golf in America.
+    </p>
+  </header>
+
+  <!-- ═══ 01 THE ANCHOR ═══ -->
+  <section>
+    <div class="section-label">01 / The Anchor</div>
+
+    <div class="anchor-quote">
+      The original Green Book mapped where Black Americans were safe to go. <strong>The Greens maps where Black golfers are welcomed, respected, and worth the trip.</strong>
+    </div>
+    <div class="anchor-attr">The Negro Motorist Green Book &mdash; Victor Hugo Green, 1936&ndash;1966</div>
+
+    <p style="margin-top:28px;">
+      This is not a marketing parallel. Augusta National did not admit a Black member until 1990. Country clubs excluded Black golfers for generations. Golf has a documented history of exclusion. East Side Golf exists as a direct response to that history. The Greens extends that response into permanent infrastructure that the community owns, maintains, and benefits from.
+    </p>
+
+    <p>
+      <strong>Golf greens. The Green Book. The Greens.</strong> The name carries the history, the mission, and the game in three syllables.
+    </p>
+  </section>
+
+  <hr />
+
+  <!-- ═══ 02 INFLECTION POINT ═══ -->
+  <section>
+    <div class="section-label">02 / The Inflection Point</div>
+
+    <h2>The brand is built.<br>The platform is the next move.</h2>
+
+    <p>
+      Olajuwon Ajanaku and Earl Cooper took East Side Golf from a T-shirt concept to $4M in annual revenue, a $3.4M raise from EP Golf Ventures (a PGA of America partnership), nine Jordan Brand collab shoes, a Mercedes partnership, and a Hulu documentary. The cultural credibility is established.
+    </p>
+
+    <p>
+      The business is still a product business. Every dollar traces back to apparel moving through a Shopify store. The community is real but it lives on Instagram, not inside a platform East Side Golf owns. The platform move is the right next step. The question is whether they design it correctly before committing capital to building the wrong version.
+    </p>
+
+    <div class="callout">
+      <p>Most brands at this inflection point make the same mistake: they hire a technical team, start building an app, and spend six months on the product before they have designed how the platform should think. The Greens is designed architecture-first.</p>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ═══ 03 PLATFORM ARCHITECTURE ═══ -->
+  <section>
+    <div class="section-label">03 / Platform Architecture</div>
+
+    <h2>Four pillars. One flywheel.</h2>
+
+    <p>Each layer feeds the others. Removing any one weakens the whole structure.</p>
+
+    <div class="grid-2">
+      <div class="cell">
+        <span class="cell-num">Pillar 01</span>
+        <h4>The Directory</h4>
+        <p>Community-vetted course and driving range listings rated on welcome factor, price accessibility, skill-level fit, and overall vibe. Courses earn Greens certification. That certification drives member traffic. Member traffic is why courses want the badge.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num">Pillar 02</span>
+        <h4>Community + Score Tracking</h4>
+        <p>Members track rounds and build handicaps inside the platform. When they travel to any city, they open The Greens and see which courses are certified and which ESG members are local and available. Social infrastructure owned by East Side Golf, not borrowed from Instagram.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num">Pillar 03</span>
+        <h4>The Membership</h4>
+        <p>Annual access at $49.99. Unlocks discounted tee times and range access at affiliated courses nationwide, priority access to ESG drops and collabs, HBCU tournament access, and the full Greens directory. Priced like a benefit, not a subscription.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num">Pillar 04</span>
+        <h4>The Referral Network</h4>
+        <p>Members earn $5 via CashApp, Venmo, or Zelle for every new member they bring in. Members who refer a course that earns Greens certification earn $25&ndash;$50 plus a standing discount at that course. The network builds itself because the network is compensated for building it.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:8px;">
+      Technology layer: 18 Birdies has 9 million users, GPS on 43,000 courses, handicap tracking, and a social feed. A co-branded partnership (similar to their GolfNow tee time integration) gives East Side Golf fast access to that infrastructure while The Greens community layer and directory are built as owned assets. The partnership proves the concept. The owned platform is the destination.
+    </p>
+  </section>
+
+  <hr />
+
+  <!-- ═══ 04 RANKINGS + RECOGNITION ═══ -->
+  <section>
+    <div class="section-label">04 / Rankings and Recognition</div>
+
+    <h2>Status inside the community<br>is what keeps people engaged.</h2>
+
+    <p>
+      Strava has segments and KOMs. LinkedIn has endorsements. The Greens has a living ranking system that tracks performance, progress, travel, and relationship-building simultaneously. Every dimension of being an engaged golfer has a score. Every score has a leaderboard.
+    </p>
+
+    <div class="grid-3">
+      <div class="cell">
+        <span class="cell-num amber">Rankings</span>
+        <h4>Performance</h4>
+        <p>National and regional leaderboards by handicap, score improvement, and consistency. Broken out by age group and skill tier so every member competes against a relevant field.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num amber">Rankings</span>
+        <h4>Most Traveled</h4>
+        <p>Ranked by number of certified courses played, cities visited, and states covered. Rewards members who bring the network to new markets. Every round they log in a new city expands the directory's credibility.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num amber">Rankings</span>
+        <h4>Most Connected</h4>
+        <p>Ranked by members referred, new relationships established, and playing partners connected across cities. Turns community-building into a tracked, recognized activity with real standing in the network.</p>
+      </div>
+    </div>
+
+    <p>Annual awards at the end of each season:</p>
+
+    <div class="grid-2" style="margin-top:0;">
+      <div class="cell">
+        <span class="cell-num amber">Awards</span>
+        <h4>Most Improved</h4>
+        <p>Biggest handicap drop over the season. Recognizes commitment to the game over raw talent. The most democratic award in the system.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num amber">Awards</span>
+        <h4>Most Consistent</h4>
+        <p>Strongest performance relative to handicap across the most rounds. Rewards showing up, not just peaking.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num amber">Awards</span>
+        <h4>Road Warrior</h4>
+        <p>Most courses visited across the most markets. The traveling member who expands the network just by playing.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num amber">Awards</span>
+        <h4>Connector of the Year</h4>
+        <p>Most new members brought in, most playing partners matched, most relationships built across the community.</p>
+      </div>
+    </div>
+
+    <p>
+      Award recipients receive exclusive ESG merch drops, event access upgrades, course credits, and community recognition tied to Jordan Brand and sponsor activations. <strong>Recognition is the retention engine.</strong> Members who appear on leaderboards do not cancel memberships.
+    </p>
+  </section>
+
+  <hr />
+
+  <!-- ═══ 05 COLLEGIATE SEGMENT ═══ -->
+  <section>
+    <div class="section-label">05 / The Collegiate Pipeline</div>
+
+    <h2>Black collegiate golfers are the most natural members the platform will ever have.</h2>
+
+    <p>
+      They play constantly. They travel between home, their university, away matches, and summer courses across the country. They need exactly what The Greens provides: vetted courses in every city, playing partners in unfamiliar markets, and a community that reflects who they are.
+    </p>
+
+    <div class="grid-2">
+      <div class="cell">
+        <span class="cell-num blue">Segment</span>
+        <h4>HBCU Golfers</h4>
+        <p>East Side Golf has already invested $300K+ in Morehouse's golf program and hosted HBCU tournaments. That relationship is the entry point. HBCU golf teams become founding member cohorts. Their coaches become Greens ambassadors on campus.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num blue">Segment</span>
+        <h4>Black Golfers at PWIs</h4>
+        <p>Black golfers on predominantly white institution teams are often isolated from community. The Greens gives them a network that travels with them. They are on courses in new cities every week. They become the fastest-growing source of directory submissions.</p>
+      </div>
+    </div>
+
+    <p>
+      Student membership tier: <strong>$24.99 per year.</strong> Half price. The logic is not charity, it is pipeline. A student member who graduates becomes a full member. A full member who played 25 rounds per year as a student will play more as a professional with more income and more discretionary time. The lifetime value of a collegiate member acquired at $24.99 is multiples of a member acquired at $49.99 at age 35.
+    </p>
+
+    <div class="callout">
+      <p>HBCU tournament hosting, already part of the ESG playbook, becomes a formal Greens event with registration, live scoring, rankings impact, and Jordan Brand sponsorship activation. Every tournament is a membership acquisition event.</p>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ═══ 06 COURSE VALUE PROPOSITION ═══ -->
+  <section>
+    <div class="section-label">06 / Why Courses Want This</div>
+
+    <h2>Greens certification is not<br>a favor to East Side Golf.<br>It is a business decision.</h2>
+
+    <p>
+      Courses that earn certification are not doing East Side Golf a favor. They are gaining access to a pre-qualified, motivated, financially capable demographic that their existing marketing does not reach and that historically has had no structured pathway to their doors.
+    </p>
+
+    <div class="grid-2">
+      <div class="cell">
+        <span class="cell-num">Course Gets</span>
+        <h4>Warm Traffic</h4>
+        <p>ESG members book rounds specifically at certified courses because of the discount and the badge. No cold acquisition. No ad spend. Members arrive pre-motivated and pre-qualified by the network.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num">Course Gets</span>
+        <h4>Brand Association</h4>
+        <p>Greens certification means East Side Golf, Jordan Brand adjacent, HBCU community, and a growing national network. That association has value in a sport working to diversify its player base and its perception.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num">Course Gets</span>
+        <h4>Events and Outings</h4>
+        <p>Scrambles, corporate outings, member-guest tournaments, golf retreats, family events, and Jordan Brand-sponsored activations. Courses that host these events see volume that no individual marketing effort generates. Golf is a family and community activity. The Greens activates that dimension at scale.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num">Course Gets</span>
+        <h4>Pro Shop Placement</h4>
+        <p>Certified courses carry East Side Golf product in the pro shop. Every golfer who walks through the door sees the brand. Courses benefit from the draw. ESG benefits from the surface area. The placement fee or wholesale margin compensates the course for the shelf space.</p>
+      </div>
+    </div>
+
+    <p>
+      Course certification terms: a 3% affiliate fee on green fees and range buckets paid by ESG members, preferential rack rates for members (15&ndash;20% off standard), and willingness to carry ESG product. In exchange: the badge, the traffic, the events, and the brand association.
+    </p>
+  </section>
+
+  <hr />
+
+  <!-- ═══ 07 THE NUMBERS ═══ -->
+  <section>
+    <div class="section-label">07 / The Numbers</div>
+
+    <h2>Conservative model.<br>Per member annual value: $90.49.</h2>
+
+    <div class="highlight-bar">
+      <div class="val">$90.49</div>
+      <div class="desc"><strong>Per member per year</strong> across membership ($49.99), green fee affiliate at 3% of $55 avg over 18 rounds ($29.70), and range affiliate at 3% of $18 avg over 20 visits ($10.80). Before events, merch, or pro shop revenue.</div>
+    </div>
+
+    <p>Assumptions: $49.99 annual membership. Discounted green fee average $55. 18 rounds per year. Range bucket average $18. 20 range visits per year. Platform takes 3% of member spend at affiliated courses. Student tier $24.99.</p>
+
+    <table class="rev-table">
+      <thead>
+        <tr>
+          <th>Revenue Stream</th>
+          <th>Year 1<br><span style="color:var(--g700);font-size:0.55rem;">2,500 members</span></th>
+          <th>Year 2<br><span style="color:var(--g700);font-size:0.55rem;">7,500 members</span></th>
+          <th>Year 3<br><span style="color:var(--g700);font-size:0.55rem;">20,000 members</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Membership fees ($49.99)</td>
+          <td class="pos">$124,975</td>
+          <td class="pos">$374,925</td>
+          <td class="pos">$999,800</td>
+        </tr>
+        <tr>
+          <td>Student memberships ($24.99)</td>
+          <td class="pos">$12,495</td>
+          <td class="pos">$37,485</td>
+          <td class="pos">$99,960</td>
+        </tr>
+        <tr>
+          <td>Green fee affiliate (3%)</td>
+          <td class="pos">$74,250</td>
+          <td class="pos">$222,750</td>
+          <td class="pos">$594,000</td>
+        </tr>
+        <tr>
+          <td>Range / bucket affiliate (3%)</td>
+          <td class="pos">$27,000</td>
+          <td class="pos">$81,000</td>
+          <td class="pos">$216,000</td>
+        </tr>
+        <tr>
+          <td>Events, scrambles, tournaments</td>
+          <td class="pos">$78,000</td>
+          <td class="pos">$234,000</td>
+          <td class="pos">$585,000</td>
+        </tr>
+        <tr>
+          <td>Merch lift (member-driven)</td>
+          <td class="pos">$32,500</td>
+          <td class="pos">$97,500</td>
+          <td class="pos">$260,000</td>
+        </tr>
+        <tr>
+          <td>Pro shop wholesale (affiliated courses)</td>
+          <td class="pos">$60,000</td>
+          <td class="pos">$200,000</td>
+          <td class="pos">$400,000</td>
+        </tr>
+        <tr>
+          <td>Referral payouts (cost)</td>
+          <td class="neg">($4,000)</td>
+          <td class="neg">($10,000)</td>
+          <td class="neg">($25,000)</td>
+        </tr>
+        <tr class="total">
+          <td>Total Platform Revenue</td>
+          <td>$405,220</td>
+          <td>$1,237,660</td>
+          <td>$3,129,760</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:0.78rem; color:var(--g600); margin-top:8px;">
+      Event model: 60 players per event, $15 platform take per player, $3,000 sponsorship per event. Merch lift: 20% of members purchase one item at $65 avg (direct platform-driven sales, separate from DTC baseline). Pro shop: $2,000 average wholesale per affiliated course (30 / 100 / 200 courses by year). Referral cost: 32%&ndash;40% of new members acquired via referral at $5 each.
+    </p>
+
+    <p style="font-size:0.82rem; color:var(--g500); margin-top:16px;">
+      <strong style="color:var(--g300);">What is and is not in these numbers.</strong> Platform revenue above covers membership fees, affiliate transaction revenue from courses (3% of what members pay), events, member-driven merch lift, and pro shop wholesale. It does not include the amplification effect on ESG's existing $4M+ direct-to-consumer apparel business. That amplification is additive and modeled separately below.
+    </p>
+
+    <div class="callout" style="margin-top:24px;">
+      <p>Year 3 platform revenue of <em>$3.13M</em> sits alongside ESG's existing $4M+ apparel business, not instead of it. The platform multiplies the apparel business by driving community members back to the store through exclusive drops, awards merchandise, event product, and brand visibility across 200+ affiliated course pro shops nationwide.</p>
+    </div>
+
+    <h3 style="margin-top:36px;">Apparel Amplification (additive to platform model)</h3>
+    <p>The platform does not replace the apparel revenue. It creates new channels and increases velocity in existing ones.</p>
+
+    <div class="grid-3" style="margin-top:16px;">
+      <div class="cell">
+        <span class="cell-num">Apparel</span>
+        <h4>DTC Visibility Lift</h4>
+        <p>Platform activity, rankings, awards, and event coverage drive organic traffic to eastsidegolf.com from people outside the current customer base. Conservative 15% lift on $4M baseline = $600K additional annually by Year 3.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num">Apparel</span>
+        <h4>Event Merchandise</h4>
+        <p>Custom tournament shirts, scramble kits, HBCU event gear, and retreat packs. Separate from the main apparel line. Each event of 60 players with a $40 merchandise attachment rate = $2,400 per event. 150 events in Year 3 = $360,000.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num">Apparel</span>
+        <h4>Pro Shop Placement</h4>
+        <p>Already in the platform model as wholesale revenue. But for ESG, it also builds the brand in markets where they have zero current retail presence. 200 courses in 50 states means ESG product in front of every golfer who walks into a certified facility.</p>
+      </div>
+    </div>
+
+    <div class="highlight-bar" style="margin-top:8px;">
+      <div class="val">$960K<em>+</em></div>
+      <div class="desc"><strong>Estimated apparel amplification by Year 3</strong> from DTC visibility lift ($600K) and event merchandise ($360K), separate from and additive to the $3.13M platform revenue and existing $4M+ DTC baseline.</div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ═══ MARKET SIZE + CAPTURE RATE ═══ -->
+  <section>
+    <div class="section-label">07b / Market Size and Capture Rate</div>
+
+    <h2>Less than 1% of the addressable market<br>generates $3M+ in Year 3.</h2>
+
+    <p>
+      According to the National Golf Foundation, 28.1 million Americans played golf on a course in 2024. 25% were Black, Asian, or Hispanic combined, representing approximately 7 million golfers of color. Black golfers have grown 123% since 2020, driven by cultural brands and post-pandemic participation gains. Isolating for Black golfers specifically: using U.S. demographic share and participation rates, the addressable market is estimated at <strong>2.5 million Black on-course golfers</strong> nationally, with a broader casual and off-course population of 4 million or more.
+    </p>
+
+    <div class="grid-4">
+      <div class="stat">
+        <div class="stat-value">2.5M<em>+</em></div>
+        <div class="stat-label">Black on-course golfers (est.)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">0.12<em>%</em></div>
+        <div class="stat-label">Capture rate needed, Year 1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">0.36<em>%</em></div>
+        <div class="stat-label">Capture rate needed, Year 2</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">0.96<em>%</em></div>
+        <div class="stat-label">Capture rate needed, Year 3</div>
+      </div>
+    </div>
+
+    <p>
+      Less than 1% of the addressable market by Year 3 generates over $3.1M in platform revenue alone. For context: Cash App captured 1% of the U.S. adult population in its first full year. The Greens is targeting 1% of a specific, motivated, culturally-aligned community with built-in brand trust through East Side Golf's existing credibility. The hurdle is lower. The case for membership is more personal.
+    </p>
+
+    <div class="callout">
+      <p>Black golf participation grew <em>123%</em> since 2020. The platform is not trying to create a market. It is trying to organize one that is already forming without infrastructure to support it.</p>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ═══ 08 REVENUE ARCHITECTURE ═══ -->
+  <section>
+    <div class="section-label">08 / Revenue Architecture</div>
+
+    <h2>Seven streams. All connected.</h2>
+
+    <div class="rev-row">
+      <div class="rev-idx">R01</div>
+      <div class="rev-body">
+        <h4>Membership Fees</h4>
+        <p>$49.99/year standard. $24.99/year student. The base layer that funds everything else. Every member who joins increases the network value for every existing member.</p>
+      </div>
+    </div>
+
+    <div class="rev-row">
+      <div class="rev-idx">R02</div>
+      <div class="rev-body">
+        <h4>Green Fee and Range Affiliate (3%)</h4>
+        <p>3% of every discounted transaction a member completes at an affiliated course. Paid by the course as the cost of warm customer acquisition. $29.70 per member per year from green fees alone. $10.80 from range visits. Scales directly with membership and engagement.</p>
+      </div>
+    </div>
+
+    <div class="rev-row">
+      <div class="rev-idx">R03</div>
+      <div class="rev-body">
+        <h4>Events, Scrambles, Retreats, Tournaments</h4>
+        <p>$15 platform take per player per event. Average $3,000 in sponsorship per event from Jordan Brand, Mercedes, and ESG brand partners. 20 events in Year 1. 150 in Year 3. Hosted at certified courses, which drives their traffic and deepens the affiliate relationship. Golf is inherently social and familial. Every family scramble, corporate outing, and HBCU tournament runs through the platform.</p>
+      </div>
+    </div>
+
+    <div class="rev-row">
+      <div class="rev-idx">R04</div>
+      <div class="rev-body">
+        <h4>Pro Shop Wholesale</h4>
+        <p>Certified courses carry East Side Golf product. Every golfer who walks through the door sees the brand. The pro shop channel puts ESG product in front of golfers who would never find it through Instagram. Average $2,000 in wholesale per course per year. 200 certified courses by Year 3 = $400,000 in wholesale channel revenue.</p>
+      </div>
+    </div>
+
+    <div class="rev-row">
+      <div class="rev-idx">R05</div>
+      <div class="rev-body">
+        <h4>Exclusive Member Drops</h4>
+        <p>Members get first access to ESG drops and collabs. Some drops are members-only. Limited quantities tied to rankings and award recognition. The drop becomes a retention mechanism. Members who want access to the next Jordan collab keep their membership active. 20% of 20,000 members purchasing one drop item at $65 average generates $260,000 in platform-attributable merch lift by Year 3.</p>
+      </div>
+    </div>
+
+    <div class="rev-row">
+      <div class="rev-idx">R06</div>
+      <div class="rev-body">
+        <h4>Referral Network</h4>
+        <p>$5 to the member who brings in a new member (CashApp / Venmo / Zelle). $25&ndash;$50 to the member who refers a course that earns certification, plus a standing discount at that course. The referral cost is the cheapest customer acquisition the platform will ever run. $1 in referral payouts returns roughly $90 in annual per-member value.</p>
+      </div>
+    </div>
+
+    <div class="rev-row">
+      <div class="rev-idx">R07</div>
+      <div class="rev-body">
+        <h4>Sponsorship and Brand Activation</h4>
+        <p>Jordan Brand, Mercedes, Arthur Blank Foundation, and future ESG brand partners sponsor events, fund awards, and activate inside the platform directory. Rankings and award announcements are natural sponsorship inventory. The Connector of the Year award presented by Jordan Brand. The Road Warrior leaderboard presented by a travel partner. Every recognition moment is a sponsorship placement that does not feel like an ad.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ═══ 09 ECROF ROLE ═══ -->
+  <section>
+    <div class="section-label">09 / Where Ecrof Fits</div>
+
+    <div class="role-block">
+      <h2>Three phases. Architecture before build.</h2>
+
+      <p style="max-width:none;">
+        East Side Golf needs a partner who can design how the platform thinks before any code is written, and then build it. The most expensive mistake at this stage is not a bad hire. It is six months of building the wrong thing with the capital they just raised. Ecrof Media's engagement is structured to prevent that.
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-n">01</div>
+          <div class="step-t"><strong>Business Brain diagnostic.</strong> Extract how East Side Golf currently operates. Where decisions sit. Where the founders are the bottleneck. What the platform needs to be able to do without them in the room for every conversation.</div>
+        </div>
+        <div class="step">
+          <div class="step-n">02</div>
+          <div class="step-t"><strong>Platform decision architecture.</strong> Design how The Greens operates before code is written. Membership logic, certification criteria, community routing, affiliate structure, ranking algorithms, event infrastructure, 18 Birdies partnership terms. Every decision the platform needs to make gets designed in advance.</div>
+        </div>
+        <div class="step">
+          <div class="step-n">03</div>
+          <div class="step-t"><strong>Build.</strong> Ecrof's technical capability builds the platform East Side Golf owns. Not outsourced to a team that understands neither the culture nor the architecture. Built to move without the founders in every conversation.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ═══ 10 APPROACH ═══ -->
+  <section>
+    <div class="section-label">10 / The Approach</div>
+
+    <h2>Observation first.<br>Offer last.</h2>
+
+    <p>
+      Olajuwon and Earl are post-Hulu, post-raise, and flooded with inbound. A cold pitch that opens with a platform concept gives them the concept for free and creates no reason to engage. The entry is a single precise observation about the inflection point they are already at. No ask. No offer. Just naming a real pattern in a way that makes them feel seen, not sold.
+    </p>
+
+    <div class="callout blue">
+      <p>The Greens concept does not leave the room until there is a conversation. The conversation is where it gets introduced as a framework already built, not an idea being floated for their reaction.</p>
+    </div>
+
+    <p><strong>Channel:</strong> LinkedIn direct message to Olajuwon Ajanaku. Where a thoughtful, non-hype message stands out against the Instagram noise they are absorbing right now.</p>
+
+    <p><strong>Sequence:</strong> Observation (Day 0) &rarr; Framework piece (Day 3) &rarr; Diagnostic offer (Day 7) &rarr; The Greens concept in a conversation (not in a message).</p>
+
+    <div class="tags">
+      <span class="tag green">LinkedIn DM</span>
+      <span class="tag green">Value first</span>
+      <span class="tag green">No pitch in message 1</span>
+      <span class="tag blue">Olajuwon Ajanaku</span>
+      <span class="tag blue">Earl Cooper</span>
+      <span class="tag amber">Target: 30 day response</span>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div>
+      <p>Internal concept brief &mdash; Ecrof Media Co. &mdash; April 2026</p>
+      <p style="margin-top:4px;">Prepared for Toure Young. Not for external distribution.</p>
+    </div>
+    <div style="text-align:right;">
+      <span class="ecrof-mark">e. Ecrof Media</span>
+      <p>Build it so it moves.</p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
